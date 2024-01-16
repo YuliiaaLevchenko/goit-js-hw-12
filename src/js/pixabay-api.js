@@ -10,7 +10,8 @@ export async function fetchImages(searchQuery, page) {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
-        page
+        page,
+        per_page: 40
     });
 
     const { data } = await axios.get(`https://pixabay.com/api/?${searchParams}`);

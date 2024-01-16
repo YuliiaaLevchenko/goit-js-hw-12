@@ -39,7 +39,16 @@ refs.form.addEventListener('submit', async (event) => {
         }
 renderGallery(hits);   
 refs.loadMoreBtn.style.display = 'block';
-         lightbox.refresh();   
+         lightbox.refresh();
+         
+         if (currentPage === Math.ceil(totalHits / 40)) {
+            iziToast.error({
+        position: 'topRight',
+            message: "We're sorry, but you've reached the end of search results.",
+                          });
+         refs.loadMoreBtn.style.display = 'none';
+    
+          }  
     } catch (error) {
         console.log(error);
     }
@@ -58,7 +67,7 @@ refs.loadMoreBtn.style.display = 'block';
 renderGallery(hits);
 lightbox.refresh();
 
-      if (currentPage > Math.ceil(totalHits / perPage)) {
+      if (currentPage === Math.ceil(totalHits / 40)) {
         iziToast.error({
     position: 'topRight',
         message: "We're sorry, but you've reached the end of search results.",
