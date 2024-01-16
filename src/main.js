@@ -6,6 +6,7 @@ import { refs } from "./js/refs";
 import { fetchImages } from "./js/pixabay-api";
 import { clearGalleryMarkup, renderGallery } from "./js/render-images";
 import { lightbox } from "./js/lightbox";
+import { smoothScrollToTop } from "./js/smooth";
 
 let currentPage = 1;
 let searchQuery;
@@ -66,6 +67,7 @@ refs.loadMoreBtn.style.display = 'block';
       const {hits, totalHits} = await fetchImages(searchQuery, currentPage);
 renderGallery(hits);
 lightbox.refresh();
+smoothScrollToTop   
 
       if (currentPage === Math.ceil(totalHits / 40)) {
         iziToast.error({
