@@ -31,7 +31,7 @@ refs.form.addEventListener('submit', async (event) => {
     try {
         const {hits, totalHits} = await fetchImages(searchQuery, currentPage);
 
-        if (hits.length === 0) {
+        if (totalHits === 0) {
             iziToast.error({
             position: 'topRight',
             message: "We're sorry, but you've reached the end of search results.",
@@ -52,6 +52,7 @@ refs.loadMoreBtn.style.display = 'block';
           }  
     } catch (error) {
         console.log(error);
+        showError("Please try again.")
     }
     
   
@@ -67,7 +68,7 @@ refs.loadMoreBtn.style.display = 'block';
       const {hits, totalHits} = await fetchImages(searchQuery, currentPage);
 renderGallery(hits);
 lightbox.refresh();
-smoothScrollToTop   
+smoothScrollToTop();   
 
       if (currentPage === Math.ceil(totalHits / 40)) {
         iziToast.error({
