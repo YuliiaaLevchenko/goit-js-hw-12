@@ -1,7 +1,6 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
-
 import { refs } from "./js/refs";
 import { fetchImages } from "./js/pixabay-api";
 import { clearGalleryMarkup, renderGallery } from "./js/render-images";
@@ -18,12 +17,11 @@ refs.form.addEventListener('submit', async (event) => {
     refs.loadMoreBtn.style.display = 'none';
   clearGalleryMarkup();    
     currentPage = 1; 
-    searchQuery = refs.input.value.trim();
+    let searchQuery = refs.input.value.trim();
     if (!searchQuery) {
         iziToast.error({
             position: 'topRight',
-            message:
-              "Input empty! Try again.",
+            message: "Input empty! Try again.",
           });
         return;
     }
@@ -51,13 +49,13 @@ refs.loadMoreBtn.style.display = 'block';
     
           }  
     } catch (error) {
+        iziToast.error({
+            position: 'topRight',
+                message: "Please try again.",
+                              });
         console.log(error);
-        showError("Please try again.")
+        
     }
-    
-  
-    
-   
   });
 
 
