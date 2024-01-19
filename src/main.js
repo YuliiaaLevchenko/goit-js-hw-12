@@ -63,7 +63,7 @@ refs.loadMoreBtn.style.display = 'block';
     currentPage++;
     
     try {
-        clearGalleryMarkup();
+        
       const {hits, totalHits} = await fetchImages(searchQuery, currentPage);
 renderGallery(hits);
 lightbox.refresh();
