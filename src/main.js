@@ -32,7 +32,7 @@ refs.form.addEventListener('submit', async (event) => {
         if (totalHits === 0) {
             iziToast.error({
             position: 'topRight',
-            message: "We're sorry, but you've reached the end of search results.",
+            message: "Sorry, try again.",
          });
          return;
         }
