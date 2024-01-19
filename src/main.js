@@ -17,7 +17,7 @@ refs.form.addEventListener('submit', async (event) => {
     refs.loadMoreBtn.style.display = 'none';
   clearGalleryMarkup();    
     currentPage = 1; 
-    let searchQuery = refs.input.value.trim();
+    searchQuery = refs.input.value.trim();
     if (!searchQuery) {
         iziToast.error({
             position: 'topRight',
@@ -63,13 +63,14 @@ refs.loadMoreBtn.style.display = 'block';
     currentPage++;
     
     try {
+        clearGalleryMarkup();
       const {hits, totalHits} = await fetchImages(searchQuery, currentPage);
 renderGallery(hits);
 lightbox.refresh();
 smoothScrollToTop();   
 
       if (currentPage === Math.ceil(totalHits / 40)) {
-        iziToast.error({
+        iziToast.info({
     position: 'topRight',
         message: "We're sorry, but you've reached the end of search results.",
                       });
